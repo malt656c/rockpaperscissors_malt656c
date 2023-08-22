@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+body {
+  background-color: #444059;
+  font-family: "Luckiest Guy", cursive;
+  color: #eee;
+  display: grid;
+  gap: 2rem;
+}
+
+h1,
+h2 {
+  text-align: center;
+  font-size: 6vw;
+}
+
+#gamefield {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+
+#player1 {
+  --rot: 1;
+}
+
+#player2 {
+  --rot: -1;
+}
+
+.player {
+  transform: scale(var(--rot), 1);
+  width: clamp(300px, 40vw, 500px);
+  height: clamp(300px, 40vw, 500px);
+  background-size: 100%;
+  background-image: url(hand_rock.png);
+  background-repeat: no-repeat;
+}
+
+.player.rock {
+  background-image: url(hand_rock.png);
+}
+
+.player.paper {
+  background-image: url(hand_paper.png);
+}
+
+.player.scissors {
+  background-image: url(hand_scissors.png);
+}
+
+.player.shake {
+  background-image: url(hand_rock.png);
+  transform-origin: left center;
+  animation: shake 1.8s ease-in 1 forwards;
+}
+
+@keyframes shake {
+  0% {
+    transform: scale(var(--rot), 1) translateX(calc((var(--rot) - 1) * 50%)) rotate(0deg);
+  }
+  16% {
+    transform: scale(var(--rot), 1) translateX(calc((var(--rot) - 1) * 50%)) rotate(-40deg);
+  }
+  24% {
+    transform: scale(var(--rot), 1) translateX(calc((var(--rot) - 1) * 50%)) rotate(5deg);
+  }
+  32% {
+    transform: scale(var(--rot), 1) translateX(calc((var(--rot) - 1) * 50%)) rotate(0deg);
+  }
+  48% {
+    transform: scale(var(--rot), 1) translateX(calc((var(--rot) - 1) * 50%)) rotate(-40deg);
+  }
+  56% {
+    transform: scale(var(--rot), 1) translateX(calc((var(--rot) - 1) * 50%)) rotate(5deg);
+  }
+  64% {
+    transform: scale(var(--rot), 1) translateX(calc((var(--rot) - 1) * 50%)) rotate(0deg);
+  }
+  80% {
+    transform: scale(var(--rot), 1) translateX(calc((var(--rot) - 1) * 50%)) rotate(-40deg);
+  }
+  96% {
+    transform: scale(var(--rot), 1) translateX(calc((var(--rot) - 1) * 50%)) rotate(5deg);
+  }
+  100% {
+    transform: scale(var(--rot), 1) translateX(calc((var(--rot) - 1) * 50%)) rotate(0deg);
+  }
+}
+
+#texts {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+#texts h2 {
+  color: #ffde53;
+  text-shadow: 4px 4px 1px red, -4px -4px 1px red, 4px -4px 1px red, -4px 4px 1px red;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+#buttons.disabled button {
+  filter: grayscale(100%) brightness(0.75);
+  pointer-events: none;
+}
+
+#buttons button {
+  background-size: 100%;
+  border-radius: 50%;
+  width: clamp(50px, 10vw, 150px);
+  height: clamp(50px, 10vw, 150px);
+  transition: all 0.2s ease-in-out;
+  border: none;
+}
+#buttons button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+button.rock {
+  background-image: url(button_rock.png);
+}
+
+button.paper {
+  background-image: url(button_paper.png);
+}
+
+button.scissors {
+  background-image: url(button_scissors.png);
+}
